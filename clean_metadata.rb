@@ -18,6 +18,8 @@ KNOWN_RIGHTS = [
   "Post-print author manuscript"
 ].freeze
 
+clean_records = []
+
 records.each do |row|
   next if row["id"].to_s.strip.empty?
 
@@ -42,7 +44,24 @@ records.each do |row|
     problems << "Record #{id}: unrecognised rights '#{rights}'"
   end
 
+  clean_records << {
+    "id"         => id,
+    "title"      => title,
+    "author"     => row["author"].to_s.strip,
+    "date"       => date,
+    "type"       => row["type"].to_s.strip,
+    "department" => row["department"].to_s.strip,
+    "abstract"   => row["abstract"].to_s.strip,
+    "rights"     => rights
+  }
+end
+
+CSV.open("cleaned_output.csv", "w") do |csv|
+  csv << ["id", "title", "author", "date", "type", "department", "abstract", "rights"]
+  clean_records.each { |r| csv << r.values }
 end
 
 puts "\nProblems found: #{problems.length}"
 problems.each { |p| puts "  - #{p}" }
+
+puts "\nCleaned file written to cleaned_output.csv"

@@ -3,7 +3,11 @@ require "date"
 
 puts "Starting metadata cleanup..."
 
-records = CSV.read("input.csv", headers: true)
+input_file = ARGV[0] || "input.csv"
+
+puts "Reading from: #{input_file}"
+
+records = CSV.read(input_file, headers: true)
 
 puts "Loaded #{records.length} records."
 
@@ -65,3 +69,26 @@ puts "\nProblems found: #{problems.length}"
 problems.each { |p| puts "  - #{p}" }
 
 puts "\nCleaned file written to cleaned_output.csv"
+
+File.open("problems_report.txt", "w") do |f|
+  f.puts "CORE Scholar Metadata Cleanup Report"
+  f.puts "Generated: #{Time.now.strftime('%Y-%m-%d %H:%M')}"
+  f.puts "Input file: #{input_file}"
+  f.puts "Records processed: #{clean_records.length}"
+  f.puts "Problems found: #{problems.length}"
+  f.puts ""
+  f.puts "=" * 40
+  f.puts ""
+
+  if problems.empty?
+    f.puts "No problems found!"
+  else
+    problems.each { |p| f.puts "  - #{p}" }
+  end
+
+  f.puts ""
+  f.puts "=" * 40
+  f.puts "Cleaned output written to: cleaned_output.csv"
+end
+
+puts "Problems report written to problems_report.txt"

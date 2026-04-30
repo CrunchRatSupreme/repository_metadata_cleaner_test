@@ -1,0 +1,14 @@
+CORE Scholar Metadata Cleanup Report
+Generated: 2026-04-30 15:16
+Input file: input.csv
+Records processed: 5
+Problems found: 3
+
+========================================
+
+  - Record 002: missing title
+  - Record 002: missing rights statement
+  - Record 003: bad date 'BADDATE'
+
+========================================
+Cleaned output written to: cleaned_output.csv

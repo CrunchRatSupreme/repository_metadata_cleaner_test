@@ -1,0 +1,7 @@
+id,title,author,date,type,department,abstract,rights
+001,Introduction to Archival Theory,"Smith, Jane",2021-05-10,dissertation,History,"A study of archival theory.",CC BY 4.0
+002,  ,"Jones, Bob",2022-03-15,journal_article,,"Missing title record.",
+003,"Climate Change and Policy","Williams, Dana",BADDATE,dissertation,Environmental Science,"Policy analysis paper.",Public Domain
+004,"Oral History Methods","Chen, Li",2020-11-01,masters_thesis,Anthropology,,CC BY-NC 4.0
+005,"Database Systems","Kumar, Priya",2023-07-22,journal_article,Computer Science,"A survey of modern databases.","Post-print author manuscript"
+
